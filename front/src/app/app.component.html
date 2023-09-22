@@ -1,0 +1,81 @@
+<div class="app">
+  <div class="header">
+    
+    <h1>Welcome to NotesApp</h1>
+    <button pButton type="button" icon="pi pi-plus" label="Create a new note" class="add-note-button" (click)="addNote()"></button>
+   
+  </div>
+  <h2 class="pinned-notes-heading">Pinned Notes</h2>
+
+  <ng-template [ngIf]="isCreatingNote">
+    <div class="note pinned p-shadow-2">
+      <input [(ngModel)]="newNote.title" placeholder="Title">
+      <textarea [(ngModel)]="newNote.content" placeholder="Content"></textarea>
+      <button (click)="saveNote()">Save</button>
+      <button (click)="cancelNote()">Cancel</button>
+    </div>
+  </ng-template>
+
+  
+  <ng-template [ngIf]="editingNote">
+    <div class="note pinned p-shadow-2">
+      <input [(ngModel)]="editingNote.title" placeholder="Title">
+      <textarea [(ngModel)]="editingNote.content" placeholder="Content"></textarea>
+      <button (click)="saveEditNote()">Save</button>
+    </div>
+  </ng-template>
+
+
+  <div class="notes-container">
+    <div class="note-list">
+      <p-dataView [value]="pinnedNotes" [layout]="'grid'" >
+        <ng-template let-note pTemplate="gridItem">
+          <div class="note pinned p-shadow-2">
+            <h2>{{note.title}}</h2>
+            
+            <p>{{note.content}}</p>
+            <p><small>Created at: {{note.createdAt | date}}</small></p>
+            <div class="note-buttons">
+              <button pButton [icon]="pinnedNotes.includes(note) ? 'pi pi-heart-fill' : 'pi pi-heart'" (click)="onPin(note)" class="p-button-rounded p-button-help"></button>
+              <button pButton icon="pi pi-pencil" (click)="onEdit(note)" class="p-button-rounded p-button-help"></button>
+              <button pButton icon="pi pi-trash" (click)="onDelete(note)" class="p-button-rounded p-button-help"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+   
+ 
+
+    <div class="note-list">
+      <p-dataView [value]="notes" [layout]="'grid'">
+        <ng-template let-note pTemplate="gridItem">
+          <div class="note p-shadow-2">
+            <h2>{{note.title}}</h2>
+            <p>{{note.content}}</p>
+            <p><small>Created at: {{note.createdAt | date}}</small></p>
+            <div class="note-buttons">
+              <button pButton [icon]="pinnedNotes.includes(note) ? 'pi pi-heart-fill' : 'pi pi-heart'" (click)="onPin(note)" class="p-button-rounded p-button-help"></button>
+              <button pButton icon="pi pi-pencil" (click)="onEdit(note)" class="p-button-rounded p-button-help"></button>
+              <button pButton icon="pi pi-trash" (click)="onDelete(note)" class="p-button-rounded p-button-help"></button>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+   
+  </div>
+</div>
+
+
+
+
+
+  
+   
+    
+
+
+
+
+ 

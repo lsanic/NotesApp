@@ -1,0 +1,72 @@
+.app {
+  font-family: Arial, sans-serif;
+ 
+}
+
+.header h1 {
+  margin: 0; 
+  flex-grow: 1; 
+  color: #F0FFFF; 
+}
+
+.header {
+  background-color: #6F8FAF;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.pinned-notes-heading {
+  font-size: 18px; 
+  margin-top: 10px; 
+  margin-right: 15px;
+  color: #191970; 
+}
+
+
+.header input {
+  flex-grow: 1;
+  margin-right: 100px;
+}
+
+ .pinned-notes{
+    flex-basis: 100%;
+    padding-right: 10px;
+ }
+
+.regular-notes{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 40px;
+}
+
+
+
+.note {
+  display: inline-block;
+  margin: 10px;
+  max-width: 300px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #CCCCFF;
+  padding: 10px;
+  width: 300px;
+  word-wrap: break-word;
+
+
+}
+
+.note-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+ 
+.notes-container{
+  display: grid;
+  grid-template-columns: 1fr; /* jedan stupac */
+  grid-template-rows: auto auto; /* 2 retka jedan za pinnane notes jedan za obicne */
+  grid-gap: 10px; 
+  
+  width: 100%;
+}
+
+
